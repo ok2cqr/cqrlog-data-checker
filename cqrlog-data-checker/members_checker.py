@@ -7,9 +7,9 @@ from pathlib import Path as Path
 def print_help():
     print("""
 arguments:
-    path to directory with country files  
+    path to directory with membership files  
 
-    e.g. python3 dxcc_checker.py ~/dxcc_tables
+    e.g. ./members_check.bash ~/membership
 
     """)
 
