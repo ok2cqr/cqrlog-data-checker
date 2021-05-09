@@ -25,7 +25,7 @@ def print_help():
 arguments:
     path to directory with country files  
   
-    e.g. python3 dxcc_checker.py ~/dxcc_tables
+    e.g. ./dxcc_check.bash ~/dxcc_tables
     
     """)
 
