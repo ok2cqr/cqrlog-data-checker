@@ -147,25 +147,6 @@ def check_common_parts(parts, error_messages):
     tools.check_adif_dates(parts[10], error_messages)
 
 
-# def print_error_messages_with_note(error_messages, note):
-#     for error_message in error_messages:
-#         print_error(error_message)
-#     if error_messages:
-#         print_note(note)
-#
-#
-# def print_error(error_message) -> None:
-#     console.print(error_message, style="bold red")
-#
-#
-# def print_note(note) -> None:
-#     console.print(note, style="bold")
-#
-#
-# def print_progress(message):
-#     console.print(message, style="bold green underline")
-
-
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print_help()
