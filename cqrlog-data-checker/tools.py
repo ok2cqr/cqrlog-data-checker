@@ -56,27 +56,33 @@ def check_adif_dates(adif_dates, error_messages) -> None:
         else:
             dates, adif = adif_dates.split('=')
             adif = adif.strip()
-            if dates:
-                if '-' not in dates:
-                    if not check_date_format(dates):
-                        error_messages.append('Invalid date ' + dates)
-                elif dates.startswith('-'):
-                    if not check_date_format(dates[1:]):
-                        error_messages.append('Invalid date ' + dates[1:])
-                elif dates[:-1] == '-':
-                    if not check_date_format(dates[:-1]):
-                        error_messages.append('Invalid date ' + dates[:-1])
-                elif len(dates.split('-')) != 2:
-                    error_messages.append('Invalid date ' + dates)
-                else:
-                    date_from, date_to = dates.split('-')
-                    if date_from and (not check_date_format(date_from)):
-                        error_messages.append('Invalid date_from: ' + date_from)
-                    if date_to and not check_date_format(date_to):
-                        error_messages.append('Invalid date_to: ' + date_to)
+            check_validity_date_format(dates, error_messages)
 
             if not is_number(adif):
                 error_messages.append('ADIF number is not correct: ' + adif)
+
+
+def check_validity_date_format(dates: str, error_messages: list):
+    if not dates.strip():
+        return None
+
+    if '-' not in dates:
+        if not check_date_format(dates):
+            error_messages.append('Invalid date1 ' + dates)
+    elif dates.startswith('-'):
+        if not check_date_format(dates[1:]):
+            error_messages.append('Invalid date2 ' + dates[1:])
+    elif dates[:-1] == '-':
+        if not check_date_format(dates[:-1]):
+            error_messages.append('Invalid date3 ' + dates[:-1])
+    elif len(dates.split('-')) != 2:
+        error_messages.append('Invalid date4 ' + dates)
+    else:
+        date_from, date_to = dates.split('-')
+        if date_from and (not check_date_format(date_from)):
+            error_messages.append('Invalid date_from: ' + date_from)
+        if date_to and not check_date_format(date_to):
+            error_messages.append('Invalid date_to: |' + date_to+'|')
 
 
 def check_waz_zone(waz_zone, error_messages) -> None:

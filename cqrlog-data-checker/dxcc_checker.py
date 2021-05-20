@@ -109,6 +109,9 @@ def check_country_tab(dxcc_data_dir, dxcc_file) -> None:
             tools.check_itu_zone(parts[6], error_messages)
             tools.check_waz_zone(parts[7], error_messages)
 
+            dates = parts[-1].strip()
+            tools.check_validity_date_format(dates, error_messages)
+
             tools.print_error_messages_with_note(error_messages, line)
     tools.print_note("DONE\n")
 
