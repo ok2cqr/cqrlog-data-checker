@@ -135,6 +135,11 @@ def check_iota_tab(dxcc_data_dir, dxcc_file) -> None:
 
 
 def check_common_parts(parts, error_messages):
+    if len(parts) < 11:
+        error_messages.append('Structure does not have the right number of items')
+        print(parts)
+        return
+
     if len(parts[8]):
         error_messages.append('Ninth item in the structure has to be empty, now is ' + parts[8])
 
